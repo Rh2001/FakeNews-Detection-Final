@@ -146,4 +146,11 @@ fig, ax = plt.subplots(figsize=(8, 6))
 disp.plot(ax=ax, values_format="d") 
 plt.title("Confusion Matrix")
 plt.tight_layout()
+
+output_path = "Confusion_Matrices/DistilBERT/DistilBERT.png"
+
+# Create directory if it doesn't exist
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+plt.savefig(output_path, dpi=300)
 plt.show()

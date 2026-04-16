@@ -35,17 +35,22 @@ def save_cm(folder, name, y_true, y_pred):
     os.makedirs(folder, exist_ok=True)
 
     cm = confusion_matrix(y_true, y_pred)
-    disp = ConfusionMatrixDisplay(cm)
 
-    fig, ax = plt.subplots()
-    disp.plot(ax=ax, values_format="d", cmap="Blues")
+    # Match second script style
+    disp = ConfusionMatrixDisplay(
+        confusion_matrix=cm,
+        display_labels=["Fake", "Real"]
+    )
 
-    ax.set_title(name)
+    fig, ax = plt.subplots(figsize=(8, 6))  # bigger figure like second script
+    disp.plot(ax=ax, values_format="d")
+
+    plt.title(f"Confusion Matrix - {name}")
     plt.tight_layout()
 
     path = os.path.join(folder, f"{name}.png")
-    plt.savefig(path)
-    plt.close()
+    plt.savefig(path, dpi=300)  # higher quality
+    plt.show()  # <-- this is key difference (also display it)
 
     print(f"Saved CM → {path}")
 
@@ -144,13 +149,13 @@ def main():
     print_metrics("BERT", y_true, bert_pred)
 
     # Confusion matrix(this one is saved in cm to separate it from the other ones )
-    save_cm("cm/Content", "content_lr", y_true, content_lr_pred)
-    save_cm("cm/Content", "content_nb", y_true, content_nb_pred)
+    save_cm("Confusion_Matrices/LIAR/Content", "content_lr", y_true, content_lr_pred)
+    save_cm("Confusion_Matrices/LIAR/Content", "content_nb", y_true, content_nb_pred)
 
-    save_cm("cm/Meta", "meta_lr", y_true, meta_lr_pred)
-    save_cm("cm/Meta", "meta_nb", y_true, meta_nb_pred)
+    save_cm("Confusion_Matrices/LIAR/Meta", "meta_lr", y_true, meta_lr_pred)
+    save_cm("Confusion_Matrices/LIAR/Meta", "meta_nb", y_true, meta_nb_pred)
 
-    save_cm("cm/BERT", "bert", y_true, bert_pred)
+    save_cm("Confusion_Matrices/LIAR/BERT", "bert", y_true, bert_pred)
 
 
 if __name__ == "__main__":

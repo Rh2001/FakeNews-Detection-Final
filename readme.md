@@ -68,7 +68,7 @@ Unknown labels are dropped to avoid noisy supervision.
 - Evaluates all saved models on LIAR test set from [script6_run_LIAR.py](script6_run_LIAR.py).
 - Reports Accuracy, Precision, Recall, and F1.
 - Prints prediction distribution per model for debugging collapse and bias.
-- Saves confusion matrices in cm/Content, cm/Meta, and cm/BERT.
+- Saves confusion matrices in Confusion_Matrices/LIAR/Content, Confusion_Matrices/LIAR/Meta, and Confusion_Matrices/LIAR/BERT.
 
 ## Environment Setup (Windows PowerShell)
 
@@ -143,11 +143,11 @@ Expected outputs:
 Expected outputs:
 - Printed metrics for CONTENT LR, CONTENT NB, META LR, META NB, and BERT
 - Confusion matrices:
-  - cm/Content/content_lr.png
-  - cm/Content/content_nb.png
-  - cm/Meta/meta_lr.png
-  - cm/Meta/meta_nb.png
-  - cm/BERT/bert.png
+  - Confusion_Matrices/LIAR/Content/content_lr.png
+  - Confusion_Matrices/LIAR/Content/content_nb.png
+  - Confusion_Matrices/LIAR/Meta/meta_lr.png
+  - Confusion_Matrices/LIAR/Meta/meta_nb.png
+  - Confusion_Matrices/LIAR/BERT/bert.png
 
 ## Run Only the LIAR Cross-Domain Evaluation
 
