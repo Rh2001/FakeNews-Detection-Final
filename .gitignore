@@ -1,0 +1,5 @@
+*.z
+*.csv
+*.tsv
+data/distilbert_fake_news_model/
+results/

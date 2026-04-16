@@ -1,0 +1,291 @@
+Copied pasted my version of the run here, might automate it later on.
+
+All batches processed in 10374.61 seconds.
+Processed data saved to: data/news_cleaned_2018_02_13_cleaned_20pct.csv
+
+Vocabulary Statistics:
+
+--- UNIQUE VOCAB SIZE ---
+Before stopwords: 1636459
+After stopwords: 1636154
+Reduction: 0.02%
+After stemming: 1427046
+Reduction: 12.78%
+
+--- TOKEN COUNTS (CORRECT METRIC) ---
+Before stopwords: 773454719
+After stopwords: 409413403
+Reduction: 47.07%
+After stemming: 409413403
+Reduction: 0.00%
+
+
+Using CONTENT ONLY...
+Train: 868371
+Validation: 108546
+Test: 108547
+
+===== BASELINE MODELS =====
+
+Training Logistic Regression...
+
+Logistic Regression (Validation):
+Accuracy: 0.900438523759512
+Precision: 0.9081030359899507
+Recall: 0.9268579019725968
+F1 Score: 0.9173846236172799
+
+Logistic Regression (Test):
+Accuracy: 0.9031663703280607
+Precision: 0.9107297047551239
+Recall: 0.9286663165374278
+F1 Score: 0.9196105574718357
+
+Training Naive Bayes...
+
+Naive Bayes (Validation):
+Accuracy: 0.8332135684410296
+Precision: 0.8014453968377097
+Recall: 0.9575822172791448
+F1 Score: 0.8725842095632222
+
+Naive Bayes (Test):
+Accuracy: 0.8345509318544041
+Precision: 0.8027100832179326
+Recall: 0.958061725725231
+F1 Score: 0.8735326220907714
+
+===== MODEL COMPARISON (TEST SET) =====
+              Model  Accuracy  Precision   Recall  F1 Score
+Logistic Regression  0.903166    0.91073 0.928666  0.919611
+        Naive Bayes  0.834551    0.80271 0.958062  0.873533
+
+===== FINAL EVALUATION (LOGISTIC REGRESSION) =====
+
+Validation:
+Accuracy: 0.900438523759512
+Precision: 0.9081030359899507
+Recall: 0.9268579019725968
+F1 Score: 0.9173846236172799
+
+Test:
+Accuracy: 0.9031663703280607
+Precision: 0.9107297047551239
+Recall: 0.9286663165374278
+F1 Score: 0.9196105574718357
+
+Detailed Report:
+              precision    recall  f1-score   support
+
+         0.0       0.89      0.87      0.88     43809
+         1.0       0.91      0.93      0.92     64738
+
+    accuracy                           0.90    108547
+   macro avg       0.90      0.90      0.90    108547
+weighted avg       0.90      0.90      0.90    108547
+
+
+===== IMPORTANT WORDS =====
+
+Top FAKE words:
+['blockchain', 'sourc', 'sheepl', 'getti', 'news', 'naturalnew', 'tlb', 'dcg', 'phaser', 'reader']
+
+Top RELIABLE words:
+['editor', 'photo', 'misstat', 'nyt', 'newslett', 'nov', 'ko', 'rec', 'main', 'diari']
+
+============================
+TASK 2: WITH METADATA
+============================
+d:\FakeNews Detection\simplemodel.py:72: DtypeWarning: Columns (6) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(self.data_path)
+
+Using CONTENT + METADATA features...
+Train: 868371
+Validation: 108546
+Test: 108547
+
+===== BASELINE MODELS =====
+
+Training Logistic Regression...
+
+Logistic Regression (Validation):
+Accuracy: 0.9852597055626187
+Precision: 0.9860505935426257
+Recall: 0.9892797009438188
+F1 Score: 0.9876625079037059
+
+Logistic Regression (Test):
+Accuracy: 0.9852322035615908
+Precision: 0.9861849096705633
+Recall: 0.9890945040007415
+F1 Score: 0.9876375639137175
+
+Training Naive Bayes...
+
+Naive Bayes (Validation):
+Accuracy: 0.8939896449431577
+Precision: 0.8621285512136715
+Recall: 0.9787756615227767
+F1 Score: 0.9167564908524014
+
+Naive Bayes (Test):
+Accuracy: 0.8948658184933715
+Precision: 0.8633947554925585
+Recall: 0.9785442861997591
+F1 Score: 0.9173702121497357
+
+===== MODEL COMPARISON (TEST SET) =====
+              Model  Accuracy  Precision   Recall  F1 Score
+Logistic Regression  0.985232   0.986185 0.989095  0.987638
+        Naive Bayes  0.894866   0.863395 0.978544  0.917370
+
+===== FINAL EVALUATION (LOGISTIC REGRESSION) =====
+
+Validation:
+Accuracy: 0.9852597055626187
+Precision: 0.9860505935426257
+Recall: 0.9892797009438188
+F1 Score: 0.9876625079037059
+
+Test:
+Accuracy: 0.9852322035615908
+Precision: 0.9861849096705633
+Recall: 0.9890945040007415
+F1 Score: 0.9876375639137175
+
+Detailed Report:
+              precision    recall  f1-score   support
+
+         0.0       0.98      0.98      0.98     43809
+         1.0       0.99      0.99      0.99     64738
+
+    accuracy                           0.99    108547
+   macro avg       0.98      0.98      0.98    108547
+weighted avg       0.99      0.99      0.99    108547
+
+
+
+'loss': '0.3733', 'grad_norm': '31.54', 'learning_rate': '3.333e-05', 'epoch': '1'}
+{'eval_loss': '0.4372', 'eval_accuracy': '0.8857', 'eval_f1': '0.9067', 'eval_precision': '0.8835', 'eval_recall': '0.9311', 'eval_runtime': '179.6', 'eval_samples_per_second': '604.4', 'eval_steps_per_second': '75.55', 'epoch': '1'}                                       
+Writing model shards: 100%|██████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  4.67it/s] 
+{'loss': '0.3775', 'grad_norm': '12.68', 'learning_rate': '1.667e-05', 'epoch': '2'}                                                    
+{'eval_loss': '0.3383', 'eval_accuracy': '0.8869', 'eval_f1': '0.9039', 'eval_precision': '0.917', 'eval_recall': '0.8911', 'eval_runtime': '177.8', 'eval_samples_per_second': '610.6', 'eval_steps_per_second': '76.32', 'epoch': '2'}                                        
+Writing model shards: 100%|██████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  4.70it/s] 
+{'loss': '0.3238', 'grad_norm': '1.415', 'learning_rate': '1.535e-10', 'epoch': '3'}                                                    
+{'eval_loss': '0.3184', 'eval_accuracy': '0.9076', 'eval_f1': '0.9239', 'eval_precision': '0.9072', 'eval_recall': '0.9413', 'eval_runtime': '178.4', 'eval_samples_per_second': '608.5', 'eval_steps_per_second': '76.06', 'epoch': '3'}                                       
+Writing model shards: 100%|██████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  4.58it/s] 
+{'train_runtime': '1.73e+04', 'train_samples_per_second': '150.6', 'train_steps_per_second': '18.82', 'train_loss': '0.3582', 'epoch': '3'}
+100%|████████████████████████████████████████████████████████████████████████████████████████| 325632/325632 [4:48:18<00:00, 18.29it/s]There were missing keys in the checkpoint model loaded: ['distilbert.embeddings.LayerNorm.weight', 'distilbert.embeddings.LayerNorm.bias'].
+There were unexpected keys in the checkpoint model loaded: ['distilbert.embeddings.LayerNorm.beta', 'distilbert.embeddings.LayerNorm.gamma'].
+100%|████████████████████████████████████████████████████████████████████████████████████████| 325632/325632 [4:48:18<00:00, 18.82it/s]
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 13568/13568 [02:57<00:00, 76.59it/s]
+
+VALIDATION: {'eval_loss': 0.31839582324028015, 'eval_accuracy': 0.9075674380896226, 'eval_f1': 0.9239388356948456, 'eval_precision': 0.9071920918253413, 'eval_recall': 0.94131549678695, 'eval_runtime': 177.1767, 'eval_samples_per_second': 612.631, 'eval_steps_per_second': 76.579, 'epoch': 3.0}
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 13568/13568 [02:57<00:00, 76.25it/s]
+
+TEST: {'eval_loss': 0.3285163342952728, 'eval_accuracy': 0.9054116303066038, 'eval_f1': 0.9220537659714999, 'eval_precision': 0.9065882388068615, 'eval_recall': 0.9380561047948591, 'eval_runtime': 177.9485, 'eval_samples_per_second': 609.974, 'eval_steps_per_second': 76.247, 'epoch': 3.0}
+Writing model shards: 100%|██████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  3.80it/s] 
+(py310_clean) PS D:\FakeNews Detection> 
+
+
+=== DESTILBERT ===
+          ==============================
+CORE PERFORMANCE METRICS
+==============================
+Accuracy:  0.9054
+Precision: 0.9066
+Recall:    0.9381
+F1-Score:  0.9221
+==============================
+
+=== FULL CLASSIFICATION REPORT ===
+              precision    recall  f1-score   support
+
+        Fake     0.9036    0.8572    0.8798     43808
+        Real     0.9066    0.9381    0.9221     64736
+
+    accuracy                         0.9054    108544
+   macro avg     0.9051    0.8976    0.9009    108544
+weighted avg     0.9054    0.9054    0.9050    108544
+
+
+=== CONFUSION MATRIX ===
+[[37552  6256]
+ [ 4008 60728]]
+
+
+==============================
+LIAR VOCABULARY STATISTICS
+==============================
+
+--- UNIQUE VOCAB SIZE ---
+Before stopwords: 12758
+After stopwords: 12480
+Stopword reduction: 2.18%
+After stemming: 8265
+Stemming reduction: 33.77%
+
+--- TOKEN COUNTS ---
+Before stopwords: 225567
+After stopwords: 124826
+Stopword reduction: 44.66%
+After stemming: 124826
+Stemming reduction: 0.00%
+
+
+
+
+
+
+LIAR requires careful normalization of label formats due to inconsistent annotation styles across sources.
+
+==============================
+LIAR CROSS-DOMAIN EVAL
+==============================
+
+Raw size: 1267
+
+Class distribution: (array([0, 1]), array([553, 714], dtype=int64))
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████| 104/104 [00:00<00:00, 4443.93it/s]
+
+===== PREDICTION DISTRIBUTIONS =====
+CONTENT LR predictions: {0.0: 391, 1.0: 876}
+CONTENT NB predictions: {0.0: 84, 1.0: 1183}
+META LR predictions: {0.0: 717, 1.0: 550}
+META NB predictions: {0.0: 78, 1.0: 1189}
+BERT predictions: {0: 509, 1: 758}
+
+===== CONTENT LR =====
+Accuracy: 0.5406471981057617
+Precision: 0.5753424657534246
+Recall: 0.7058823529411765
+F1: 0.6339622641509434
+
+===== CONTENT NB =====
+Accuracy: 0.5682715074980268
+Precision: 0.5705832628909552
+Recall: 0.9453781512605042
+F1: 0.7116499736425935
+
+===== META LR =====
+Accuracy: 0.5169692186266772
+Precision: 0.5927272727272728
+Recall: 0.4565826330532213
+F1: 0.5158227848101266
+
+===== META NB =====
+Accuracy: 0.5714285714285714
+Precision: 0.5719091673675357
+Recall: 0.9523809523809523
+F1: 0.7146610614818707
+
+===== BERT =====
+Accuracy: 0.5359116022099447
+Precision: 0.58311345646438
+Recall: 0.6190476190476191
+F1: 0.6005434782608695
+Saved CM → cm/Content\content_lr.png
+Saved CM → cm/Content\content_nb.png
+Saved CM → cm/Meta\meta_lr.png
+Saved CM → cm/Meta\meta_nb.png
+Saved CM → cm/BERT\bert.png
