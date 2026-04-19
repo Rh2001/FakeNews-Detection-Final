@@ -288,7 +288,14 @@ class FakeNewsClassifier:
         print("\n===== IMPORTANT WORDS =====")
 
         feature_names = self.best_model.named_steps["tfidf"].get_feature_names_out()
-        coef = self.best_model.named_steps["clf"].coef_[0]
+        clf = self.best_model.named_steps["clf"]
+
+        if hasattr(clf, "coef_"):
+            coef = clf.coef_[0]
+        elif hasattr(clf, "feature_log_prob_"):
+            coef = clf.feature_log_prob_[0]
+        else:
+            raise ValueError("Unsupported model for feature importance")
 
         top_fake = np.argsort(coef)[:top_n]
         top_real = np.argsort(coef)[-top_n:]
