@@ -190,12 +190,12 @@ class FakeNewsPreprocessor:
         self.report_vocab_statistics()
 
     def report_vocab_statistics(self):
-        # Unique vocab sizes (your original metrics)
+        # Unique vocab sizes for each stage
         vocab_before_size = len(self.vocab_before)
         vocab_after_stop_size = len(self.vocab_after_stopwords)
         vocab_after_stem_size = len(self.vocab_after_stemming)
 
-        # ✅ NEW: total token counts (correct metric)
+        # Total token counts (correct metric for reduction in text size)
         total_before = sum(self.vocab_before.values())
         total_after_stop = sum(self.vocab_after_stopwords.values())
         total_after_stem = sum(self.vocab_after_stemming.values())
