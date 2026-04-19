@@ -317,7 +317,12 @@ class FakeNewsClassifier:
         self.load_and_split_data(use_metadata=True)
         self.train_baselines()
 
-        self.best_model = self.lr_pipeline
+        if f1_score(self.y_val, self.lr_val_pred, pos_label=0) > \
+            f1_score(self.y_val, self.nb_val_pred, pos_label=0):
+            self.best_model = self.lr_pipeline
+        else:
+            self.best_model = self.nb_pipeline
+        
         self.evaluate()
 
 
