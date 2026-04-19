@@ -249,10 +249,15 @@ class FakeNewsClassifier:
         plt.show()
 
     def evaluate(self):
-        print("\n===== FINAL EVALUATION (LOGISTIC REGRESSION) =====")
+        model_name = type(self.best_model.named_steps["clf"]).__name__
+        print(f"\n===== FINAL EVALUATION ({model_name}) =====")
 
-        val_pred = self.lr_val_pred
-        test_pred = self.lr_test_pred
+        if self.best_model == self.lr_pipeline:
+            val_pred = self.lr_val_pred
+            test_pred = self.lr_test_pred
+        else:
+            val_pred = self.nb_val_pred
+            test_pred = self.nb_test_pred
 
         print("\nValidation:")
         self.print_metrics(self.y_val, val_pred)
