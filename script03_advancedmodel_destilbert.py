@@ -55,7 +55,7 @@ def compute_metrics(eval_pred):
     preds = np.argmax(logits, axis=1)
 
     precision, recall, f1, _ = precision_recall_fscore_support(
-        labels, preds, average="binary"
+        labels, preds, average="binary", pos_label=0  # Focus on fake news metrics
     )
     acc = accuracy_score(labels, preds)
 

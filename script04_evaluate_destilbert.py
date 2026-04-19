@@ -120,7 +120,7 @@ y_pred = np.argmax(preds.predictions, axis=1)
 
 # Metrics Calculation
 accuracy = accuracy_score(y_test, y_pred)
-precision, recall, f1, _ = precision_recall_fscore_support(y_test, y_pred, average='binary')
+precision, recall, f1, _ = precision_recall_fscore_support(y_test, y_pred, average='binary', pos_label=0)
 
 print("\n" + "="*30)
 print("CORE PERFORMANCE METRICS")
@@ -135,16 +135,16 @@ print("\n=== FULL CLASSIFICATION REPORT ===")
 print(classification_report(y_test, y_pred, digits=4, target_names=["Fake", "Real"]))
 
 print("\n=== CONFUSION MATRIX ===")
-cm = confusion_matrix(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred, labels=[1, 0])
 print(cm)
 
 # Plotting the confusion matrix using sklearn's built-in functionality for better visualization
 # Create the display object using the labels and CM data
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["Fake", "Real"])
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["Real", "Fake"])
 
 fig, ax = plt.subplots(figsize=(8, 6))
 disp.plot(ax=ax, values_format="d") 
-plt.title("Confusion Matrix")
+plt.title("Confusion Matrix (Positive: Fake)")
 plt.tight_layout()
 
 output_path = "Confusion_Matrices/DistilBERT/DistilBERT.png"

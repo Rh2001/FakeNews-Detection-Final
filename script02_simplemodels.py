@@ -132,8 +132,8 @@ class FakeNewsClassifier:
         base_dir = f"Confusion_Matrices/{self.experiment_name}"
         os.makedirs(base_dir, exist_ok=True)
 
-        cm = confusion_matrix(y_true, y_pred)
-        disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+        cm = confusion_matrix(y_true, y_pred, labels=[1, 0])  # Ensure consistent order: Real (1) first, Fake (0) second
+        disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["Real", "Fake"])
 
         fig, ax = plt.subplots()
         disp.plot(ax=ax, values_format="d")
@@ -205,16 +205,16 @@ class FakeNewsClassifier:
                 accuracy_score(y_true, nb_pred),
             ],
             "Precision": [
-                precision_score(y_true, lr_pred),
-                precision_score(y_true, nb_pred),
+                precision_score(y_true, lr_pred, pos_label=0),  # Focus on fake news precision
+                precision_score(y_true, nb_pred, pos_label=0),
             ],
             "Recall": [
-                recall_score(y_true, lr_pred),
-                recall_score(y_true, nb_pred),
+                recall_score(y_true, lr_pred, pos_label=0),  # Focus on fake news recall
+                recall_score(y_true, nb_pred, pos_label=0),
             ],
             "F1 Score": [
-                f1_score(y_true, lr_pred),
-                f1_score(y_true, nb_pred),
+                f1_score(y_true, lr_pred, pos_label=0),  # Focus on fake news F1
+                f1_score(y_true, nb_pred, pos_label=0),
             ],
         })
 
@@ -224,13 +224,13 @@ class FakeNewsClassifier:
     def plot_confusion_matrices_side_by_side(self, y_true, lr_pred, nb_pred):
         fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
-        lr_cm = confusion_matrix(y_true, lr_pred)
-        nb_cm = confusion_matrix(y_true, nb_pred)
+        lr_cm = confusion_matrix(y_true, lr_pred, labels=[1, 0])
+        nb_cm = confusion_matrix(y_true, nb_pred, labels=[1, 0])
 
-        ConfusionMatrixDisplay(lr_cm).plot(ax=axes[0], values_format="d")
+        ConfusionMatrixDisplay(lr_cm, display_labels=["Real", "Fake"]).plot(ax=axes[0], values_format="d")
         axes[0].set_title("Logistic Regression")
 
-        ConfusionMatrixDisplay(nb_cm).plot(ax=axes[1], values_format="d")
+        ConfusionMatrixDisplay(nb_cm, display_labels=["Real", "Fake"]).plot(ax=axes[1], values_format="d")
         axes[1].set_title("Naive Bayes")
 
         os.makedirs(f"Confusion_Matrices/{self.experiment_name}", exist_ok=True)
@@ -240,9 +240,9 @@ class FakeNewsClassifier:
         )
         plt.show()
 
-    def plot_confusion_matrix(self, y_true, y_pred, title="Confusion Matrix"):
-        cm = confusion_matrix(y_true, y_pred)
-        disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+    def plot_confusion_matrix(self, y_true, y_pred, title="Confusion Matrix (Positive: Fake)"):
+        cm = confusion_matrix(y_true, y_pred, labels=[1, 0])
+        disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["Real", "Fake"])
 
         disp.plot()
         plt.title(title)
@@ -265,14 +265,19 @@ class FakeNewsClassifier:
         self.plot_confusion_matrix(self.y_test, test_pred, title="Test Confusion Matrix")
 
         print("\nDetailed Report:")
-        print(classification_report(self.y_test, test_pred))
+        print(classification_report(
+            self.y_test,
+            test_pred,
+            labels=[0, 1],
+            target_names=["Fake", "Real"]
+            ))
 
     @staticmethod
     def print_metrics(y_true, y_pred):
         print("Accuracy:", accuracy_score(y_true, y_pred))
-        print("Precision:", precision_score(y_true, y_pred))
-        print("Recall:", recall_score(y_true, y_pred))
-        print("F1 Score:", f1_score(y_true, y_pred))
+        print("Precision:", precision_score(y_true, y_pred, pos_label=0))
+        print("Recall:", recall_score(y_true, y_pred, pos_label=0))
+        print("F1 Score:", f1_score(y_true, y_pred, pos_label=0))
 
     def show_top_words(self, top_n=10):
         print("\n===== IMPORTANT WORDS =====")

@@ -19,8 +19,13 @@ Reduction: 47.07%
 After stemming: 409413403
 Reduction: 0.00%
 
+============================
+TASK 1: CONTENT ONLY
+============================
 
 Using CONTENT ONLY...
+d:\FakeNews Detection\script02_simplemodels.py:86: DtypeWarning: Columns (6) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(self.data_path)
 Train: 868371
 Validation: 108546
 Test: 108547
@@ -31,54 +36,54 @@ Training Logistic Regression...
 
 Logistic Regression (Validation):
 Accuracy: 0.900438523759512
-Precision: 0.9081030359899507
-Recall: 0.9268579019725968
-F1 Score: 0.9173846236172799
+Precision: 0.8885147862120927
+Recall: 0.8613983428062727
+F1 Score: 0.8747464679361621
 
 Logistic Regression (Test):
 Accuracy: 0.9031663703280607
-Precision: 0.9107297047551239
-Recall: 0.9286663165374278
-F1 Score: 0.9196105574718357
+Precision: 0.8914280340433536
+Recall: 0.8654842612248624
+F1 Score: 0.8782645958560624
 
 Training Naive Bayes...
 
 Naive Bayes (Validation):
 Accuracy: 0.8332135684410296
-Precision: 0.8014453968377097
-Recall: 0.9575822172791448
-F1 Score: 0.8725842095632222
+Precision: 0.9119787159021701
+Recall: 0.6494327649569723
+F1 Score: 0.7586326427219156
 
 Naive Bayes (Test):
 Accuracy: 0.8345509318544041
-Precision: 0.8027100832179326
-Recall: 0.958061725725231
-F1 Score: 0.8735326220907714
+Precision: 0.9132033248081841
+Recall: 0.6520349699833368
+F1 Score: 0.760830481162354
 
 ===== MODEL COMPARISON (TEST SET) =====
               Model  Accuracy  Precision   Recall  F1 Score
-Logistic Regression  0.903166    0.91073 0.928666  0.919611
-        Naive Bayes  0.834551    0.80271 0.958062  0.873533
+Logistic Regression  0.903166   0.891428 0.865484  0.878265
+        Naive Bayes  0.834551   0.913203 0.652035  0.760830
 
 ===== FINAL EVALUATION (LOGISTIC REGRESSION) =====
 
 Validation:
 Accuracy: 0.900438523759512
-Precision: 0.9081030359899507
-Recall: 0.9268579019725968
-F1 Score: 0.9173846236172799
+Precision: 0.8885147862120927
+Recall: 0.8613983428062727
+F1 Score: 0.8747464679361621
 
 Test:
 Accuracy: 0.9031663703280607
-Precision: 0.9107297047551239
-Recall: 0.9286663165374278
-F1 Score: 0.9196105574718357
+Precision: 0.8914280340433536
+Recall: 0.8654842612248624
+F1 Score: 0.8782645958560624
 
 Detailed Report:
               precision    recall  f1-score   support
 
-         0.0       0.89      0.87      0.88     43809
-         1.0       0.91      0.93      0.92     64738
+        Fake       0.89      0.87      0.88     43809
+        Real       0.91      0.93      0.92     64738
 
     accuracy                           0.90    108547
    macro avg       0.90      0.90      0.90    108547
@@ -88,7 +93,7 @@ weighted avg       0.90      0.90      0.90    108547
 ===== IMPORTANT WORDS =====
 
 Top FAKE words:
-['blockchain', 'sourc', 'sheepl', 'getti', 'news', 'naturalnew', 'tlb', 'dcg', 'phaser', 'reader']
+['blockchain', 'sourc', 'sheepl', 'getti', 'news', 'naturalnew', 'tlb', 'dcg', 'phaser', 'reader']   
 
 Top RELIABLE words:
 ['editor', 'photo', 'misstat', 'nyt', 'newslett', 'nov', 'ko', 'rec', 'main', 'diari']
@@ -96,10 +101,10 @@ Top RELIABLE words:
 ============================
 TASK 2: WITH METADATA
 ============================
-d:\FakeNews Detection\simplemodel.py:72: DtypeWarning: Columns (6) have mixed types. Specify dtype option on import or set low_memory=False.
-  df = pd.read_csv(self.data_path)
 
 Using CONTENT + METADATA features...
+d:\FakeNews Detection\script02_simplemodels.py:86: DtypeWarning: Columns (6) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(self.data_path)
 Train: 868371
 Validation: 108546
 Test: 108547
@@ -110,59 +115,60 @@ Training Logistic Regression...
 
 Logistic Regression (Validation):
 Accuracy: 0.9852597055626187
-Precision: 0.9860505935426257
-Recall: 0.9892797009438188
-F1 Score: 0.9876625079037059
+Precision: 0.9840814734958827
+Recall: 0.9793193179483668
+F1 Score: 0.9816946205066014
 
 Logistic Regression (Test):
 Accuracy: 0.9852322035615908
-Precision: 0.9861849096705633
-Recall: 0.9890945040007415
-F1 Score: 0.9876375639137175
+Precision: 0.9838140217341464
+Recall: 0.9795247551872903
+F1 Score: 0.981664703123749
 
 Training Naive Bayes...
 
 Naive Bayes (Validation):
 Accuracy: 0.8939896449431577
-Precision: 0.8621285512136715
-Recall: 0.9787756615227767
-F1 Score: 0.9167564908524014
+Precision: 0.9607988587731812
+Recall: 0.7687004953320095
+F1 Score: 0.8540813350410226
 
 Naive Bayes (Test):
 Accuracy: 0.8948658184933715
-Precision: 0.8633947554925585
-Recall: 0.9785442861997591
-F1 Score: 0.9173702121497357
+Precision: 0.9605117270788912
+Recall: 0.7712113949188523
+F1 Score: 0.8555150410209663
 
 ===== MODEL COMPARISON (TEST SET) =====
               Model  Accuracy  Precision   Recall  F1 Score
-Logistic Regression  0.985232   0.986185 0.989095  0.987638
-        Naive Bayes  0.894866   0.863395 0.978544  0.917370
+Logistic Regression  0.985232   0.983814 0.979525  0.981665
+        Naive Bayes  0.894866   0.960512 0.771211  0.855515
 
 ===== FINAL EVALUATION (LOGISTIC REGRESSION) =====
 
 Validation:
 Accuracy: 0.9852597055626187
-Precision: 0.9860505935426257
-Recall: 0.9892797009438188
-F1 Score: 0.9876625079037059
+Precision: 0.9840814734958827
+Recall: 0.9793193179483668
+F1 Score: 0.9816946205066014
 
 Test:
 Accuracy: 0.9852322035615908
-Precision: 0.9861849096705633
-Recall: 0.9890945040007415
-F1 Score: 0.9876375639137175
+Precision: 0.9838140217341464
+Recall: 0.9795247551872903
+F1 Score: 0.981664703123749
 
 Detailed Report:
               precision    recall  f1-score   support
 
-         0.0       0.98      0.98      0.98     43809
-         1.0       0.99      0.99      0.99     64738
+        Fake       0.98      0.98      0.98     43809
+        Real       0.99      0.99      0.99     64738
 
     accuracy                           0.99    108547
    macro avg       0.98      0.98      0.98    108547
 weighted avg       0.99      0.99      0.99    108547
 
+(py310_clean) PS D:\FakeNews Detection> 
 
 
 'loss': '0.3733', 'grad_norm': '31.54', 'learning_rate': '3.333e-05', 'epoch': '1'}
@@ -190,12 +196,17 @@ Writing model shards: 100%|█████████████████�
 
 === DESTILBERT ===
           ==============================
+
+--- Running Predictions ---
+100%|███████████████████████████████████████████████████████████| 6784/6784 [06:51<00:00, 16.50it/s]
+
+==============================
 CORE PERFORMANCE METRICS
 ==============================
 Accuracy:  0.9054
-Precision: 0.9066
-Recall:    0.9381
-F1-Score:  0.9221
+Precision: 0.9036
+Recall:    0.8572
+F1-Score:  0.8798
 ==============================
 
 === FULL CLASSIFICATION REPORT ===
@@ -210,43 +221,18 @@ weighted avg     0.9054    0.9054    0.9050    108544
 
 
 === CONFUSION MATRIX ===
-[[37552  6256]
- [ 4008 60728]]
+[[60728  4008]
+ [ 6256 37552]]
 
 
 ==============================
-LIAR VOCABULARY STATISTICS
-==============================
-
---- UNIQUE VOCAB SIZE ---
-Before stopwords: 12758
-After stopwords: 12480
-Stopword reduction: 2.18%
-After stemming: 8265
-Stemming reduction: 33.77%
-
---- TOKEN COUNTS ---
-Before stopwords: 225567
-After stopwords: 124826
-Stopword reduction: 44.66%
-After stemming: 124826
-Stemming reduction: 0.00%
-
-
-
-
-
-
-LIAR requires careful normalization of label formats due to inconsistent annotation styles across sources.
-
-==============================
-LIAR CROSS-DOMAIN EVAL
+LIAR CROSS-DOMAIN EVAL (FIXED)
 ==============================
 
 Raw size: 1267
 
 Class distribution: (array([0, 1]), array([553, 714], dtype=int64))
-Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████| 104/104 [00:00<00:00, 4443.93it/s]
+Loading weights: 100%|██████████████████████████████████████████| 104/104 [00:00<00:00, 7423.29it/s]
 
 ===== PREDICTION DISTRIBUTIONS =====
 CONTENT LR predictions: {0.0: 391, 1.0: 876}
@@ -257,35 +243,55 @@ BERT predictions: {0: 509, 1: 758}
 
 ===== CONTENT LR =====
 Accuracy: 0.5406471981057617
-Precision: 0.5753424657534246
-Recall: 0.7058823529411765
-F1: 0.6339622641509434
+Precision: 0.4629156010230179
+Recall: 0.32730560578661844
+F1: 0.3834745762711864
 
 ===== CONTENT NB =====
 Accuracy: 0.5682715074980268
-Precision: 0.5705832628909552
-Recall: 0.9453781512605042
-F1: 0.7116499736425935
+Precision: 0.5357142857142857
+Recall: 0.081374321880651
+F1: 0.141287284144427
 
 ===== META LR =====
 Accuracy: 0.5169692186266772
-Precision: 0.5927272727272728
-Recall: 0.4565826330532213
-F1: 0.5158227848101266
+Precision: 0.45885634588563456
+Recall: 0.5949367088607594
+F1: 0.5181102362204725
 
 ===== META NB =====
 Accuracy: 0.5714285714285714
-Precision: 0.5719091673675357
-Recall: 0.9523809523809523
-F1: 0.7146610614818707
+Precision: 0.5641025641025641
+Recall: 0.07956600361663653
+F1: 0.13946117274167988
 
 ===== BERT =====
 Accuracy: 0.5359116022099447
-Precision: 0.58311345646438
-Recall: 0.6190476190476191
-F1: 0.6005434782608695
-Saved CM → cm/Content\content_lr.png
-Saved CM → cm/Content\content_nb.png
-Saved CM → cm/Meta\meta_lr.png
-Saved CM → cm/Meta\meta_nb.png
-Saved CM → cm/BERT\bert.png
+Precision: 0.4656188605108055
+Recall: 0.42857142857142855
+F1: 0.4463276836158192
+Saved CM → Confusion_Matrices/LIAR/Content\content_lr.png
+Saved CM → Confusion_Matrices/LIAR/Content\content_nb.png
+Saved CM → Confusion_Matrices/LIAR/Meta\meta_lr.png
+Saved CM → Confusion_Matrices/LIAR/Meta\meta_nb.png
+Saved CM → Confusion_Matrices/LIAR/BERT\bert.png
+(py310_clean) PS D:\FakeNews Detection> 
+
+
+Label Distribution (Cleaned Data):
+----------------------------------------
+hate: 15141 (1.00%)
+fake: 177273 (11.72%)
+bias: 216897 (14.34%)
+conspiracy: 142632 (9.43%)
+political: 268321 (17.74%)
+unknown: 68489 (4.53%)
+junksci: 22836 (1.51%)
+unreliable: 58639 (3.88%)
+reliable: 379055 (25.06%)
+satire: 22142 (1.46%)
+clickbait: 45780 (3.03%)
+rumor: 95347 (6.30%)
+2018-02-10 13:43:39.521661: 2 (0.00%)
+----------------------------------------
+Total valid rows: 1512554

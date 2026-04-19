@@ -21,9 +21,9 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 def print_metrics(name, y_true, y_pred):
     print(f"\n===== {name} =====")
     print("Accuracy:", accuracy_score(y_true, y_pred))
-    print("Precision:", precision_score(y_true, y_pred, average="binary", zero_division=0))
-    print("Recall:", recall_score(y_true, y_pred, average="binary", zero_division=0))
-    print("F1:", f1_score(y_true, y_pred, average="binary", zero_division=0))
+    print("Precision:", precision_score(y_true, y_pred, average="binary", zero_division=0, pos_label=0))
+    print("Recall:", recall_score(y_true, y_pred, average="binary", zero_division=0, pos_label=0))
+    print("F1:", f1_score(y_true, y_pred, average="binary", zero_division=0, pos_label=0))
 
 
 def debug_preds(name, pred):
@@ -34,18 +34,15 @@ def debug_preds(name, pred):
 def save_cm(folder, name, y_true, y_pred):
     os.makedirs(folder, exist_ok=True)
 
-    cm = confusion_matrix(y_true, y_pred)
+    cm = confusion_matrix(y_true, y_pred, labels=[1, 0])  # Ensure consistent order again: Real (1) first, Fake (0) second
 
     # Match second script style
-    disp = ConfusionMatrixDisplay(
-        confusion_matrix=cm,
-        display_labels=["Fake", "Real"]
-    )
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["Real", "Fake"])
 
     fig, ax = plt.subplots(figsize=(8, 6))  # bigger figure like second script
     disp.plot(ax=ax, values_format="d")
 
-    plt.title(f"Confusion Matrix - {name}")
+    plt.title(f"Confusion Matrix(Positive: Fake) - {name}")
     plt.tight_layout()
 
     path = os.path.join(folder, f"{name}.png")
