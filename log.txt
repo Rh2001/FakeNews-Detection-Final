@@ -19,6 +19,69 @@ Reduction: 47.07%
 After stemming: 409413403
 Reduction: 0.00%
 
+
+================ DATASET OVERVIEW ================
+
+Total rows: 1591673
+Total columns: 7
+Index(['domain', 'type', 'content', 'title', 'authors', 'keywords', 'source'], dtype='object')
+
+================ LABEL QUALITY ================
+
+Missing or empty labels: 79119
+Percentage missing labels: 4.97%
+
+================ URL STATISTICS ================
+
+domain: 1591665 URLs
+content: 0 URLs
+title: 0 URLs
+authors: 0 URLs
+keywords: 0 URLs
+source: 0 URLs
+
+================ HTML TAG STATISTICS ================
+
+domain: 0 HTML tag occurrences
+content: 0 HTML tag occurrences
+title: 0 HTML tag occurrences
+authors: 0 HTML tag occurrences
+keywords: 0 HTML tag occurrences
+source: 0 HTML tag occurrences
+
+================ TEXT SPARSITY ================
+
+domain: 0 empty values (0.00%)
+content: 13 empty values (0.00%)
+title: 9093 empty values (0.57%)
+authors: 666326 empty values (41.86%)
+keywords: 1591673 empty values (100.00%)
+source: 1218867 empty values (76.58%)
+
+================ MOST SPARSE COLUMN ================
+
+Most empty column: keywords
+Empty rate: 100.00%
+
+================ LABEL DISTRIBUTION ================
+
+type
+reliable                      379055
+political                     268321
+bias                          216897
+fake                          177273
+conspiracy                    142632
+rumor                          95347
+NaN                            79119
+unknown                        68489
+unreliable                     58639
+clickbait                      45780
+junksci                        22836
+satire                         22142
+hate                           15141
+2018-02-10 13:43:39.521661         2
+Name: count, dtype: int64
+
 ============================
 TASK 1: CONTENT ONLY
 ============================
